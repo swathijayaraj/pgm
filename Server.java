@@ -1,21 +1,20 @@
-import java.rmi.*;
-import java.rmi.server.*;
-import java.rmi.Naming.*;
-import java.rmi.registry.*;
-import java.io.*;
-public class Server
-{            
+ import java.rmi.*;
+import java.net.*;
 
-        public static void main(String args[])throws IOException
-        {
-                try
-                {
-                        Impl j=new Impl();
-                        Naming.rebind("localhost",j);
-                        System.out.println("server bound");
-                }
-                catch(Exception e)
-                {}
-        }
+public class  Server
+{
+  	public static void main(String args[])
+ 	 {
+  		try
+  		{
+  			Impl s=new Impl();
+ 			 Naming.rebind("SERVICE",s);
+ 			 System.out.println("Server Started ");
+ 		 }
+ 	 catch(Exception e)
+  	{
+  		System.out.println(e.getMessage());
+ 	}
+  	}
+
 }
-

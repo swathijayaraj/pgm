@@ -1,9 +1,11 @@
-import java.net.*;
-import java.rmi.*;
+ import java.rmi.*;
+
 public interface Fcl extends Remote
 {
-     public void cmpr(String s1,String s2)throws RemoteException;
-     public void concat(String s1,String s2)throws RemoteException;
-     public void cse(String s1, String s2)throws RemoteException;
-     public void rev(String s1)throws RemoteException;
+public String reverse(String str)throws RemoteException;
+public int compare(String str,String str2)throws RemoteException;
+public String append(String str,String str2)throws RemoteException;
+public String ucase(String str)throws RemoteException;
+public String lcase(String str)throws RemoteException;
+public void close()throws RemoteException;
 }

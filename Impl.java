@@ -1,57 +1,83 @@
-import java.io.*;
-import java.rmi.*;
-import java.lang.String;
+ import java.rmi.*;
 import java.rmi.server.*;
+import java.lang.String;
+
+
+
 public class Impl extends UnicastRemoteObject implements Fcl
+  {
+
+ 	 public Impl()throws Exception
+ 		 {
+ 		 super();
+  		}
+
+	public String reverse(String str)throws RemoteException
+   		{
+
+     		int i,length;
+    		 String rev=" ";
+     		length=str.length();
+     		for(i=length-1;i>=0;i--)
+     			{
+       			rev+=str.charAt(i);
+    			 }
+		
+		return(rev);
+		}
+
+	public int compare(String str,String str2)throws RemoteException
+   {
+int c;
+      if(str.compareTo(str2)>0)
+      {
+	c=1;
+       
+      }
+      else if(str.compareTo(str2)<0)
+      {
+c=2;
+         
+      }
+      else
+      { 
+c=0;
+       
+      }
+return(c);
+   }
+
+
+
+public String append(String str,String str2)throws RemoteException
+   
+   {
+     String c;
+     c=str.concat(str2);
+     return(c);
+   }
+
+
+
+ public String ucase(String str)throws RemoteException
+   
+   {
+     String lstr;
+     lstr=str.toLowerCase();
+	return(lstr);
+   }
+
+
+  public String lcase(String str)throws RemoteException
+   
+   {
+     String ustr;
+     ustr=str.toUpperCase();
+	return(ustr);
+   }
+public void close()throws RemoteException
 {
-    
-	public Impl()throws RemoteException
-	{
-	//	throw new RemoteException();
-	}
-	public void cmpr(String s1,String s2)throws RemoteException
- 	{
-		int l=s1.length();
-		int l2=s2.length();
-		int c=0;
-		if(l==l2)
-		{
-			for(int i=0;i<=l;i++)
-			{
-				if(s1.charAt(i)==s2.charAt(i))
-				c++;
-				else
-				c=0;	
-			}
-		}
-		if(c!=0)
-		{
-			System.out.println("Strings are equal");
-		}
-		else
-			System.out.println("strings are not equal");
-	}
-	public void rev(String s1)throws RemoteException
-	{
-		String r="";
-		int l=s1.length();
-		for(int i=l-1;i>=0;i--)
-		{
-			r=r+s1.charAt(i);
-		}
-		System.out.println("Reverse:"+r);
-	}
-	public void concat(String s1,String s2)throws RemoteException
-	{
-		s1=s1+s2;
-		System.out.println("concatenated string:"+s1);
-	}
-	public void cse(String s1,String s2)throws RemoteException
-	{
-		s1=s1.toLowerCase();
-		System.out.println("lower:"+s1);
-		s2=s2.toUpperCase();
-		System.out.println("upper:"+s2);
-	}
-	
+System.exit(0);
+}
+
 }
